@@ -1,0 +1,503 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+@import "tailwindcss";
+
+:root {
+  --bg: #FBF3E7;
+  --bg-header: #FCF6EC;
+  --bg-alt: #E9D9C4;
+  --accent: #B96F48;
+  --accent-hover: #9E5B37;
+  --text: #604734;
+  --card: #FFFDF9;
+  --border: #E8DCCB;
+  --muted: #8A7968;
+  --success: #6B8E6B;
+  --error: #C25B4A;
+  --warning: #D4A843;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-header: var(--bg-header);
+  --color-bg-alt: var(--bg-alt);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-text: var(--text);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-success: var(--success);
+  --color-error: var(--error);
+  --color-warning: var(--warning);
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-script: 'Caveat', cursive, sans-serif;
+}
+
+:root {
+  --container-7xl: 80rem;
+  --container-8xl: 90rem;
+}
+
+@layer base {
+  *, ::after, ::before {
+    box-sizing: border-box;
+  }
+}
+
+.site-container {
+  width: 100%;
+  max-width: 1080px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .site-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+.hero-container {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .hero-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+.font-script {
+  font-family: var(--font-script);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-alt);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
+/* Selection styling */
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+/* Focus styling for accessibility */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.3s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s ease-out forwards;
+}
+
+/* Staggered animations */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+
+/* Skeleton loading */
+.skeleton {
+  background: linear-gradient(90deg, var(--border) 25%, var(--bg) 50%, var(--border) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+/* Floating craft doodle animations */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(1.5deg); }
+}
+
+@keyframes floatReverse {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(6px) rotate(-1.5deg); }
+}
+
+.animate-float-slow {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: floatReverse 6s ease-in-out infinite;
+}
+
+/* Authentic Floating Craft Stickers */
+.craft-sticker {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.35s ease-out;
+  filter: drop-shadow(0 8px 18px rgba(96, 71, 52, 0.12));
+  cursor: pointer;
+  will-change: transform;
+}
+
+.craft-sticker:hover {
+  transform: translateY(-8px) scale(1.07) rotate(0deg) !important;
+  filter: drop-shadow(0 18px 30px rgba(96, 71, 52, 0.22)) !important;
+}
+
+@keyframes floatBob1 {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes floatBob2 {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(8px); }
+}
+
+@keyframes floatBob3 {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-sticker-1 {
+  animation: floatBob1 4.5s ease-in-out infinite;
+}
+
+.animate-sticker-2 {
+  animation: floatBob2 5.5s ease-in-out infinite;
+}
+
+.animate-sticker-3 {
+  animation: floatBob3 6.5s ease-in-out infinite;
+}
+
+/* ═════════════════════════════════════════════════════════════════════ */
+/* ─── SOPHISTICATED APPLE-INSPIRED LIQUID GLASS HEADER STYLES ───────── */
+/* ═════════════════════════════════════════════════════════════════════ */
+
+/* Header Surface */
+.header-liquid-glass {
+  background-color: rgba(251, 243, 231, 0.88);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border-bottom: 1px solid rgba(111, 78, 55, 0.12);
+  transition: all 0.3s ease;
+}
+
+.header-liquid-glass.is-scrolled {
+  background-color: rgba(255, 252, 246, 0.92);
+  box-shadow: 0 4px 20px -2px rgba(75, 51, 34, 0.08);
+  border-bottom-color: rgba(111, 78, 55, 0.18);
+}
+
+/* Central Translucent Glass Navigation Capsule */
+.nav-liquid-capsule {
+  position: relative;  /* anchor for the sliding bubble */
+  height: 44px;
+  padding: 0 8px;
+  background: rgba(255, 252, 246, 0.72);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgba(111, 78, 55, 0.16);
+  border-radius: 9999px;
+  box-shadow: 
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.95),
+    0 4px 16px -2px rgba(75, 51, 34, 0.08);
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* ── THE SLIDING LIQUID BUBBLE ──
+   One element that glides between nav items like a water droplet.
+   Position/size driven by JS (useLayoutEffect).
+   Width/transform transition gives the liquid movement. */
+.nav-sliding-bubble {
+  position: absolute;
+  top: 50%;
+  left: 8px;        /* offset = capsule padding */
+  transform: translateY(-50%) translateX(0);
+  border-radius: 9999px;
+  background: linear-gradient(180deg, #C07A52 0%, #A35B34 48%, #8A4526 100%);
+  border: 1px solid rgba(255, 255, 255, 0.52);
+  box-shadow:
+    0 5px 16px -3px rgba(111, 78, 55, 0.38),
+    0 2px 6px 0 rgba(0, 0, 0, 0.14),
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.88),
+    inset 0 -2px 3px 0 rgba(55, 22, 8, 0.42);
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+  /* ✔ The smooth water-like movement */
+  transition:
+    transform 0.45s cubic-bezier(0.34, 1.3, 0.64, 1),
+    width     0.4s  cubic-bezier(0.34, 1.2, 0.64, 1),
+    opacity   0.25s ease;
+}
+
+/* Convex specular dome — the glassy shine on top */
+.nav-bubble-gloss {
+  position: absolute;
+  top: 1.5px;
+  left: 5px;
+  right: 5px;
+  height: 46%;
+  border-radius: 9999px 9999px 50% 50% / 9999px 9999px 34% 34%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(255, 255, 255, 0.48) 52%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  box-shadow: inset 0 1.5px 2px 0 rgba(255, 255, 255, 1);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Caustic ambient glow at the bottom rim */
+.nav-bubble-caustic {
+  position: absolute;
+  bottom: 1px;
+  left: 14%;
+  right: 14%;
+  height: 36%;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at bottom,
+    rgba(255, 255, 255, 0.52) 0%,
+    rgba(255, 255, 255, 0)    70%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Nav Item Link — sits above the bubble via z-index */
+.nav-liquid-item {
+  position: relative;
+  z-index: 10;        /* always above the bubble */
+  font-family: var(--font-body);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #715B49;
+  padding: 7px 16px;
+  border-radius: 9999px;
+  white-space: nowrap;
+  transition: color 0.25s ease, font-weight 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.nav-liquid-item:hover:not(.is-active) {
+  color: #A75F3D;
+}
+
+/* Active item — stays legible during bubble computation */
+.nav-liquid-item.is-active {
+  color: #A75F3D;
+  font-weight: 600;
+}
+
+/* Active item text goes white only once bubble is positioned and visible */
+.nav-liquid-item.is-active.bubble-visible {
+  color: #FFFFFF;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(60, 25, 10, 0.4);
+}
+
+/* Right-side Action Pills */
+.action-liquid-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #604734;
+  background: rgba(255, 252, 246, 0.6);
+  border: 1px solid rgba(111, 78, 55, 0.14);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.8), 0 2px 6px -1px rgba(75, 51, 34, 0.05);
+  transition: all 0.2s ease;
+}
+
+.action-liquid-btn:hover {
+  color: #B96F48;
+  background: rgba(255, 252, 246, 0.95);
+  border-color: rgba(185, 111, 72, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Admin Studio Subtle Terracotta Glass Pill */
+.action-admin-pill {
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #8C5236;
+  background: rgba(185, 111, 72, 0.12);
+  border: 1px solid rgba(185, 111, 72, 0.28);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.8), 0 2px 8px -2px rgba(185, 111, 72, 0.15);
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.action-admin-pill:hover {
+  background: rgba(185, 111, 72, 0.18);
+  border-color: rgba(185, 111, 72, 0.4);
+  color: #6E3B22;
+  transform: translateY(-1px);
+}
+
+/* User Account Cream Glass Pill */
+.action-user-pill {
+  height: 38px;
+  padding: 0 12px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 11.5px;
+  font-weight: 500;
+  color: #604734;
+  background: rgba(255, 252, 246, 0.72);
+  border: 1px solid rgba(111, 78, 55, 0.16);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.85), 0 2px 8px -2px rgba(75, 51, 34, 0.05);
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.action-user-pill:hover {
+  background: rgba(255, 252, 246, 0.95);
+  border-color: rgba(185, 111, 72, 0.35);
+  color: #B96F48;
+  transform: translateY(-1px);
+}
+
+/* Warm Liquid Glass Notification Pill */
+.liquid-notification-warm {
+  background: rgba(255, 252, 246, 0.92);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(111, 78, 55, 0.18);
+  border-top: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 
+    0 20px 45px -10px rgba(75, 51, 34, 0.16),
+    0 4px 12px -2px rgba(75, 51, 34, 0.06),
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.95);
+  border-radius: 9999px;
+  animation: liquidDrop 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes liquidDrop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -24px) scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}

@@ -1,0 +1,230 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum OrderStatus {
+  PENDING
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+enum Level {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+}
+
+enum EnquiryType {
+  CUSTOM_ORDER
+  COURSE
+  WHOLESALE
+  GENERAL
+}
+
+model User {
+  id             String           @id @default(cuid())
+  name           String?
+  email          String           @unique
+  emailVerified  DateTime?
+  image          String?
+  role           Role             @default(USER)
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+
+  orders         Order[]
+  enrollments    Enrollment[]
+  lessonProgress LessonProgress[]
+  reviews        Review[]
+  enquiries      Enquiry[]
+}
+
+model Product {
+  id           String      @id @default(cuid())
+  slug         String      @unique
+  name         String
+  description  String
+  price        Float
+  comparePrice Float?
+  images       String[]
+  category     String
+  categorySlug String
+  material     String?
+  stock        Int         @default(0)
+  isNew        Boolean     @default(false)
+  isFeatured   Boolean     @default(false)
+  rating       Float       @default(5.0)
+  reviewCount  Int         @default(0)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  variants     Variant[]
+  orderItems   OrderItem[]
+  reviews      Review[]
+  enquiries    Enquiry[]
+}
+
+model Variant {
+  id         String      @id @default(cuid())
+  productId  String
+  product    Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  color      String?
+  size       String?
+  sku        String?     @unique
+  stock      Int         @default(0)
+  price      Float?
+  createdAt  DateTime    @default(now())
+
+  orderItems OrderItem[]
+}
+
+model Order {
+  id              String      @id @default(cuid())
+  orderNumber     String      @unique
+  userId          String?
+  user            User?       @relation(fields: [userId], references: [id], onDelete: SetNull)
+  status          OrderStatus @default(PENDING)
+  subtotal        Float
+  shipping        Float       @default(0)
+  total           Float
+  currency        String      @default("INR")
+  razorpayOrderId String?
+  razorpayPaymentId String?
+  
+  // Shipping details
+  fullName        String
+  email           String
+  phone           String
+  addressLine1    String
+  addressLine2    String?
+  city            String
+  state           String
+  pincode         String
+  notes           String?
+
+  items           OrderItem[]
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+}
+
+model OrderItem {
+  id        String   @id @default(cuid())
+  orderId   String
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product  @relation(fields: [productId], references: [id])
+  variantId String?
+  variant   Variant? @relation(fields: [variantId], references: [id])
+  quantity  Int      @default(1)
+  price     Float
+}
+
+model Course {
+  id              String       @id @default(cuid())
+  slug            String       @unique
+  title           String
+  description     String
+  longDescription String?
+  instructor      String
+  price           Float
+  comparePrice    Float?
+  image           String
+  level           Level        @default(BEGINNER)
+  duration        String
+  lessonCount     Int          @default(0)
+  studentCount    Int          @default(0)
+  rating          Float        @default(5.0)
+  reviewCount     Int          @default(0)
+  isFeatured      Boolean      @default(false)
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+
+  modules         Module[]
+  enrollments     Enrollment[]
+  reviews         Review[]
+}
+
+model Module {
+  id        String   @id @default(cuid())
+  title     String
+  courseId  String
+  course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  order     Int      @default(0)
+  lessons   Lesson[]
+}
+
+model Lesson {
+  id        String   @id @default(cuid())
+  title     String
+  duration  String
+  isPreview Boolean  @default(false)
+  videoId   String?  // Mux / Cloudflare stream asset ID
+  order     Int      @default(0)
+  moduleId  String
+  module    Module   @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+
+  progress  LessonProgress[]
+}
+
+model Enrollment {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  courseId    String
+  course      Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  enrolledAt  DateTime @default(now())
+
+  @@unique([userId, courseId])
+}
+
+model LessonProgress {
+  id             String    @id @default(cuid())
+  userId         String
+  user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lessonId       String
+  lesson         Lesson    @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  completedAt    DateTime?
+  lastPositionSec Int      @default(0)
+  updatedAt      DateTime  @updatedAt
+
+  @@unique([userId, lessonId])
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  rating    Int      @default(5)
+  text      String
+  userName  String
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  productId String?
+  product   Product? @relation(fields: [productId], references: [id], onDelete: Cascade)
+  courseId  String?
+  course    Course?  @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+}
+
+model Enquiry {
+  id        String      @id @default(cuid())
+  type      EnquiryType @default(GENERAL)
+  name      String
+  email     String
+  phone     String?
+  message   String
+  productId String?
+  product   Product?    @relation(fields: [productId], references: [id], onDelete: SetNull)
+  userId    String?
+  user      User?       @relation(fields: [userId], references: [id], onDelete: SetNull)
+  createdAt DateTime    @default(now())
+}
