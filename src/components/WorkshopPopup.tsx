@@ -22,12 +22,12 @@ export default function WorkshopPopup() {
 
   return (
     <div
-      className="fixed inset-0 z-[200] flex items-center justify-center p-4"
+      className="fixed inset-0 z-[200] flex items-center justify-center p-3 sm:p-4 overflow-y-auto"
       style={{ background: 'rgba(89, 67, 51, 0.45)', backdropFilter: 'blur(4px)' }}
       onClick={dismiss}
     >
       <div
-        className="workshop-popup relative max-w-sm w-full rounded-3xl overflow-hidden shadow-2xl"
+        className="workshop-popup relative max-w-sm w-full max-h-[92vh] overflow-y-auto rounded-3xl shadow-2xl my-auto"
         style={{ background: '#FAF3E8', border: '1px solid #D8C4A8' }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -37,14 +37,14 @@ export default function WorkshopPopup() {
         {/* Close button */}
         <button
           onClick={dismiss}
-          className="absolute top-4 right-4 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-colors"
+          className="absolute top-3 right-3 sm:top-4 sm:right-4 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-colors z-20"
           style={{ background: '#D8C4A8', color: '#594333' }}
           aria-label="Close popup"
         >
           ✕
         </button>
 
-        <div className="p-6 text-center">
+        <div className="p-5 sm:p-6 text-center">
           {/* Animated yarn flower */}
           <div className="workshop-float-anim mx-auto mb-3 w-14 h-14 flex items-center justify-center rounded-full text-3xl"
             style={{ background: '#D8C4A8/40', fontSize: 36 }}>

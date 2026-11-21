@@ -34,39 +34,39 @@ export default function WorkshopsPage() {
     <main className="min-h-screen" style={{ background: '#FAF3E8' }}>
 
       {/* ── HERO ───────────────────────────────────────────────────── */}
-      <section className="relative py-20 px-4 overflow-hidden" style={{ background: '#FAF3E8' }}>
+      <section className="relative py-12 sm:py-20 px-4 overflow-hidden" style={{ background: '#FAF3E8' }}>
         {/* Floating doodles */}
-        <div className="absolute top-8 left-6 text-5xl opacity-10 select-none pointer-events-none animate-float-slow">🧶</div>
-        <div className="absolute top-12 right-8 text-4xl opacity-10 select-none pointer-events-none animate-float-reverse">🌸</div>
-        <div className="absolute bottom-6 left-16 text-3xl opacity-10 select-none pointer-events-none animate-sticker-2">🎀</div>
+        <div className="absolute top-6 left-4 sm:top-8 sm:left-6 text-3xl sm:text-5xl opacity-10 select-none pointer-events-none animate-float-slow">🧶</div>
+        <div className="absolute top-10 right-4 sm:top-12 sm:right-8 text-3xl sm:text-4xl opacity-10 select-none pointer-events-none animate-float-reverse">🌸</div>
+        <div className="absolute bottom-4 left-8 sm:bottom-6 sm:left-16 text-2xl sm:text-3xl opacity-10 select-none pointer-events-none animate-sticker-2">🎀</div>
 
         <div className="max-w-3xl mx-auto text-center">
-          <span className="inline-block text-[11px] tracking-[0.22em] uppercase font-semibold px-4 py-1.5 rounded-full mb-6"
+          <span className="inline-block text-[10px] sm:text-[11px] tracking-[0.2em] uppercase font-semibold px-3.5 py-1.5 rounded-full mb-4 sm:mb-6"
             style={{ background: 'rgba(169,104,69,0.12)', color: '#A96845', border: '1px solid rgba(169,104,69,0.25)' }}>
             ✦ Loop &amp; Loom Handmade Workshop ✦
           </span>
 
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight mb-5"
+          <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-semibold leading-tight mb-4 sm:mb-5"
             style={{ color: '#594333' }}>
             Create Something Beautiful<br />
             <span style={{ color: '#A96845' }}>With Your Own Hands</span>
           </h1>
 
-          <p className="text-base sm:text-lg mb-8 max-w-xl mx-auto leading-relaxed"
+          <p className="text-sm sm:text-lg mb-6 sm:mb-8 max-w-xl mx-auto leading-relaxed px-2"
             style={{ color: '#8A7968' }}>
             Join us for a creative handmade experience filled with colours, crafts and creativity.
             Walk away with over 10 beautiful items you made yourself.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center items-stretch sm:items-center max-w-xs sm:max-w-none mx-auto">
             <Link href="/workshops/register"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-sm font-bold text-white transition-all hover:opacity-90 active:scale-[0.98] shadow-lg"
+              className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl text-sm font-bold text-white transition-all hover:opacity-90 active:scale-[0.98] shadow-lg w-full sm:w-auto"
               style={{ background: '#A96845' }}>
               Register Now ✦
               <ChevronRight size={16} />
             </Link>
             <a href="#sessions"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-sm font-semibold transition-all hover:bg-[#D8C4A8]/30"
+              className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl text-sm font-semibold transition-all hover:bg-[#D8C4A8]/30 w-full sm:w-auto"
               style={{ color: '#594333', border: '1px solid #D8C4A8' }}>
               View Sessions
             </a>
@@ -207,21 +207,21 @@ export default function WorkshopsPage() {
       </section>
 
       {/* ── PRICING & CTA ───────────────────────────────────────────── */}
-      <section className="py-16 px-4 text-center" style={{ background: '#594333' }}>
+      <section className="py-12 sm:py-16 px-4 text-center" style={{ background: '#594333' }}>
         <div className="max-w-2xl mx-auto">
-          <div className="text-5xl mb-4">🎀</div>
-          <h2 className="font-display text-3xl sm:text-4xl font-semibold mb-3 text-white">
+          <div className="text-4xl sm:text-5xl mb-4">🎀</div>
+          <h2 className="font-display text-2xl sm:text-4xl font-semibold mb-3 text-white">
             Only {WORKSHOP_CONFIG.feeDisplay} per person
           </h2>
-          <p className="text-sm mb-2" style={{ color: '#D8C4A8' }}>
+          <p className="text-xs sm:text-sm mb-2" style={{ color: '#D8C4A8' }}>
             All materials included · Certificate of participation · 10+ handmade products to take home
           </p>
-          <p className="text-xs mb-8 font-semibold uppercase tracking-widest"
-            style={{ color: '#A96845' }}>
+          <p className="text-[11px] sm:text-xs mb-6 sm:mb-8 font-semibold uppercase tracking-widest"
+            style={{ color: '#D8C4A8' }}>
             ⚠ Limited seats available — book yours today!
           </p>
           <Link href="/workshops/register"
-            className="inline-flex items-center gap-2 px-10 py-4 rounded-2xl text-sm font-bold transition-all hover:opacity-90 shadow-xl"
+            className="inline-flex items-center justify-center gap-2 px-6 sm:px-10 py-3.5 sm:py-4 rounded-2xl text-sm font-bold transition-all hover:opacity-90 shadow-xl w-full sm:w-auto"
             style={{ background: '#A96845', color: '#fff' }}>
             Register Now — {WORKSHOP_CONFIG.feeDisplay} ✦
           </Link>

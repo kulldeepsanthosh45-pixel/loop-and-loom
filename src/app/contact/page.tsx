@@ -49,8 +49,7 @@ export default function ContactPage() {
                   <div>
                     <h4 className="font-semibold text-text text-sm">Artisan Studio</h4>
                     <p className="text-muted mt-0.5">
-                      42, 3rd Cross, Indiranagar<br />
-                      Bengaluru, Karnataka 560038, India
+                      Chennai, Tamil Nadu, India
                     </p>
                   </div>
                 </div>
@@ -61,8 +60,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-text text-sm">Email Us</h4>
-                    <p className="text-muted mt-0.5">hello@loopandloom.in</p>
-                    <p className="text-muted">academy@loopandloom.in</p>
+                    <p className="text-muted mt-0.5">loopandloom@gmail.com</p>
                   </div>
                 </div>
 
@@ -72,7 +70,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-text text-sm">WhatsApp &amp; Support</h4>
-                    <p className="text-muted mt-0.5">+91 98765 43210</p>
+                    <p className="text-muted mt-0.5">+91 7708905419</p>
                     <p className="text-[10px] text-muted">Mon – Sat, 10:00 AM – 6:00 PM IST</p>
                   </div>
                 </div>

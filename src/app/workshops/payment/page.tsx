@@ -187,13 +187,13 @@ function PaymentPageInner() {
           <div className="p-6">
             {/* QR Code */}
             <div className="flex flex-col items-center mb-6">
-              <div className="rounded-2xl p-3 shadow-sm mb-3" style={{ background: '#fff', border: '1px solid #E8DCCB' }}>
+              <div className="rounded-2xl p-2.5 sm:p-3 shadow-sm mb-3 max-w-[220px] w-full" style={{ background: '#fff', border: '1px solid #E8DCCB' }}>
                 <Image
                   src={WORKSHOP_CONFIG.upi.qrImage}
                   alt="UPI QR Code — Scan to pay"
                   width={220}
                   height={220}
-                  className="rounded-xl"
+                  className="rounded-xl w-full h-auto object-contain"
                 />
               </div>
               <p className="text-xs font-medium" style={{ color: '#8A7968' }}>Scan with any UPI app</p>
@@ -206,16 +206,16 @@ function PaymentPageInner() {
             </div>
 
             {/* UPI ID */}
-            <div className="rounded-xl p-4 mb-4 flex items-center justify-between gap-3"
+            <div className="rounded-xl p-3 sm:p-4 mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-3"
               style={{ background: '#FAF3E8', border: '1px solid #D8C4A8' }}>
-              <div>
+              <div className="min-w-0 flex-1">
                 <p className="text-[10px] font-semibold uppercase tracking-wide mb-0.5" style={{ color: '#8A7968' }}>UPI ID</p>
-                <p className="font-mono font-bold text-sm" style={{ color: '#594333' }}>
+                <p className="font-mono font-bold text-xs sm:text-sm break-all" style={{ color: '#594333' }}>
                   {WORKSHOP_CONFIG.upi.id}
                 </p>
               </div>
               <button onClick={copyUPI}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold transition-all"
+                className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold transition-all w-full sm:w-auto"
                 style={{ background: copied ? '#6B8E6B' : '#A96845', color: '#fff' }}>
                 {copied ? <><Check size={12} /> Copied!</> : <><Copy size={12} /> Copy</>}
               </button>

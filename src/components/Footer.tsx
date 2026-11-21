@@ -32,7 +32,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="mailto:hello@loopandloom.in"
+                href="mailto:loopandloom@gmail.com"
                 className="w-10 h-10 rounded-xl bg-bg/10 flex items-center justify-center hover:bg-accent transition-colors"
                 aria-label="Email"
               >
@@ -88,15 +88,19 @@ export default function Footer() {
             <div className="space-y-3 mb-6">
               <div className="flex items-start gap-3 text-sm text-bg-alt/70">
                 <Mail size={16} className="mt-0.5 flex-shrink-0" />
-                <span>hello@loopandloom.in</span>
+                <a href="mailto:loopandloom@gmail.com" className="hover:text-bg transition-colors">
+                  loopandloom@gmail.com
+                </a>
               </div>
               <div className="flex items-start gap-3 text-sm text-bg-alt/70">
                 <Phone size={16} className="mt-0.5 flex-shrink-0" />
-                <span>+91 98765 43210</span>
+                <a href="tel:+917708905419" className="hover:text-bg transition-colors">
+                  +91 7708905419
+                </a>
               </div>
               <div className="flex items-start gap-3 text-sm text-bg-alt/70">
                 <MapPin size={16} className="mt-0.5 flex-shrink-0" />
-                <span>Mumbai, Maharashtra, India</span>
+                <span>Chennai, India</span>
               </div>
             </div>
             <h4 className="font-display text-lg font-medium text-bg mb-3">Policies</h4>

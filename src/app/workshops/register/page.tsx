@@ -149,7 +149,7 @@ export default function WorkshopRegisterPage() {
         </div>
 
         {/* Form */}
-        <div className="rounded-3xl shadow-sm p-6 sm:p-8"
+        <div className="rounded-3xl shadow-sm p-4 sm:p-8"
           style={{ background: '#FFFDF9', border: '1px solid #E8DCCB' }}>
 
           {error && (

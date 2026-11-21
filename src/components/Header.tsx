@@ -86,32 +86,32 @@ export default function Header() {
           isScrolled ? 'header-liquid-glass is-scrolled' : 'header-liquid-glass'
         }`}
       >
-        {/* Top Announcement Bar (exact 27px) */}
-        <div className="bg-[#604734] text-[#FBF3E7] h-[27px] px-4 flex items-center justify-center text-center">
-          <p className="font-body flex items-center justify-center gap-1.5 text-[10.5px] sm:text-[11.5px] tracking-wide">
+        {/* Top Announcement Bar */}
+        <div className="bg-[#604734] text-[#FBF3E7] min-h-[27px] py-1 px-3 sm:px-4 flex items-center justify-center text-center">
+          <p className="font-body flex items-center justify-center gap-1.5 text-[9.5px] sm:text-[11.5px] tracking-wide leading-tight">
             <span className="text-[#E9D9C4]">✧</span>
             <span>Free Express Shipping across India on orders ₹999+</span>
-            <span className="opacity-60">·</span>
-            <span>Use code <strong className="text-amber-200 font-semibold tracking-wider">HELLO-CRAFT</strong> for 10% off</span>
+            <span className="opacity-60 hidden sm:inline">·</span>
+            <span className="hidden sm:inline">Use code <strong className="text-amber-200 font-semibold tracking-wider">HELLO-CRAFT</strong> for 10% off</span>
           </p>
         </div>
 
-        {/* Main Header Container (exact 80px, centered max-w-[1200px], 24px padding) */}
-        <div className="max-w-[1200px] mx-auto px-6 h-[80px] flex items-center justify-between">
+        {/* Main Header Container (responsive 68px on mobile, 80px on desktop) */}
+        <div className="max-w-[1200px] mx-auto px-3 sm:px-6 h-[68px] sm:h-[80px] flex items-center justify-between gap-2">
           
           {/* Mobile menu button (on tablet / phone) */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 text-[#604734] hover:text-[#B96F48] transition-colors"
+            className="lg:hidden p-1.5 sm:p-2 text-[#604734] hover:text-[#B96F48] transition-colors rounded-lg"
             aria-label="Toggle mobile menu"
           >
-            {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
 
           {/* ── Brand Logo (Left) ─────────────────────────────────── */}
-          <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
+          <Link href="/" className="flex items-center gap-2 sm:gap-3 group flex-shrink-0">
             {/* Circular L&L Logo Icon */}
-            <div className="relative w-[42px] h-[42px] rounded-full overflow-hidden flex-shrink-0 border border-[#604734]/15 shadow-sm bg-white group-hover:scale-105 transition-transform">
+            <div className="relative w-[34px] h-[34px] sm:w-[42px] sm:h-[42px] rounded-full overflow-hidden flex-shrink-0 border border-[#604734]/15 shadow-sm bg-white group-hover:scale-105 transition-transform">
               <Image
                 src="/images/logo.png"
                 alt="Loop & Loom Official Logo"
@@ -123,10 +123,10 @@ export default function Header() {
             
             {/* Brand Title & Subtitle */}
             <div className="flex flex-col">
-              <span className="font-display text-[21px] sm:text-[22px] font-bold tracking-[0.08em] text-[#604734] group-hover:text-[#B96F48] transition-colors leading-tight whitespace-nowrap">
+              <span className="font-display text-[18px] sm:text-[22px] font-bold tracking-[0.06em] text-[#604734] group-hover:text-[#B96F48] transition-colors leading-tight whitespace-nowrap">
                 LOOP &amp; LOOM
               </span>
-              <span className="text-[9px] tracking-[0.18em] uppercase text-[#8A7664] font-body whitespace-nowrap mt-0.5">
+              <span className="text-[8px] sm:text-[9px] tracking-[0.14em] uppercase text-[#8A7664] font-body whitespace-nowrap hidden sm:block mt-0.5">
                 HANDMADE WITH LOVE · LEARN WITH JOY
               </span>
             </div>
@@ -283,8 +283,8 @@ export default function Header() {
         )}
       </header>
 
-      {/* Spacer matching exact 27px announcement + 80px navbar = 107px */}
-      <div className="h-[107px]" />
+      {/* Spacer matching responsive header height */}
+      <div className="h-[95px] sm:h-[107px]" />
 
       {/* Cart Drawer */}
       <CartDrawer />
