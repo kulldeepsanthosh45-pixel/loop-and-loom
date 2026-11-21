@@ -210,8 +210,8 @@ export default function WorkshopsPage() {
       <section className="py-12 sm:py-16 px-4 text-center" style={{ background: '#594333' }}>
         <div className="max-w-2xl mx-auto">
           <div className="text-4xl sm:text-5xl mb-4">🎀</div>
-          <h2 className="font-display text-2xl sm:text-4xl font-semibold mb-3 text-white">
-            Only {WORKSHOP_CONFIG.feeDisplay} per person
+          <h2 className="font-display text-2xl sm:text-4xl font-semibold mb-3" style={{ color: '#FFFFFF' }}>
+            Only <span style={{ color: '#FBF3E7', textDecoration: 'none' }}>{WORKSHOP_CONFIG.feeDisplay}</span> per person
           </h2>
           <p className="text-xs sm:text-sm mb-2" style={{ color: '#D8C4A8' }}>
             All materials included · Certificate of participation · 10+ handmade products to take home

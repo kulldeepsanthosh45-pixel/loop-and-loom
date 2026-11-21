@@ -180,7 +180,9 @@ function PaymentPageInner() {
             <p className="text-xs uppercase tracking-widest font-semibold mb-1" style={{ color: '#D8C4A8' }}>
               Workshop Fee
             </p>
-            <p className="font-display text-5xl font-semibold text-white">₹{amount.toLocaleString('en-IN')}</p>
+            <p className="font-display text-4xl sm:text-5xl font-semibold" style={{ color: '#FFFFFF' }}>
+              ₹{amount.toLocaleString('en-IN')}
+            </p>
             <p className="text-xs mt-1" style={{ color: '#D8C4A8' }}>Pay to: {WORKSHOP_CONFIG.upi.name}</p>
           </div>
 
